@@ -26,11 +26,11 @@
         :model='user'
         :rules='rules'
         v-loading='isShowLoading' >
-          <el-form-item  prop='mobile' >
-            <el-input v-model='user.mobile' placeholder='请输入账号'></el-input>
+          <el-form-item  prop='phone' >
+            <el-input v-model='user.phone' placeholder='请输入账号'></el-input>
           </el-form-item>
-          <el-form-item  prop='code' >
-            <el-input v-model='user.code' placeholder='请输入密码' ></el-input>
+          <el-form-item  prop='password' >
+            <el-input v-model='user.password' placeholder='请输入密码' ></el-input>
           </el-form-item>
           <!-- <el-form-item prop='isagree'>
             <el-checkbox v-model='user.isagree' type='boolean' >请阅读用户隐私协议和用户协议</el-checkbox>
@@ -43,22 +43,23 @@
   </div>
 </template>
 <script>
+import { login } from '@/api/user.js'
 export default {
   name: 'login',
   data () {
     return {
       user: {
-        mobile: '',
-        code: ''
+        phone: '15038267031',
+        password: '123456'
       },
       isShowLoading: false,
       rules: {
-        mobile: [
+        phone: [
           { required: true, message: '请输入账号', trigger: 'blur' },
           { pattern: /^1[3|5|6|7|8|9]\d{9}$/, message: '必须为手机号', trigger: 'change' },
           { min: 3, max: 11, message: '账号格式错误，长度在3-11位', trigger: 'change' }
         ],
-        code: [
+        password: [
           { required: true, message: '请输入密码', trigger: 'blur' }
         ]
         //  自定义验证规则
@@ -77,6 +78,31 @@ export default {
         //   }
         //  ]
       }
+    }
+  },
+  methods: {
+    onLogin (form) {
+      this.$refs[form].validate((validate, error) => {
+        console.log(validate)
+        if (!validate) {
+          for (const key in error) {
+            this.$message.error(error[key][0].message)
+          }
+          return
+        }
+        this.doLogin()
+      })
+    },
+    doLogin () {
+      console.log('dologin')
+      login({
+        phone: this.user.phone,
+        password: this.user.password
+      }).then((result) => {
+        console.log(result)
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   }
 }

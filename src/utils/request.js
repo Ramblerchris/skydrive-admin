@@ -1,8 +1,8 @@
 import axios from 'axios'
 import JSONBig from 'json-bigint'
 
-export const request = axios.create({
-  baseURL: '',
+const request = axios.create({
+  baseURL: 'http://127.0.0.1:9996',
   transformResponse: [function (data) {
     try {
       //  如果转换成功，直接返回
@@ -13,3 +13,5 @@ export const request = axios.create({
     }
   }]
 })
+
+export default request
