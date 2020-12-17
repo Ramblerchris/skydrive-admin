@@ -1,5 +1,6 @@
 import axios from 'axios'
 import JSONBig from 'json-bigint'
+import store from '@/store/index.js'
 
 const request = axios.create({
   baseURL: 'http://127.0.0.1:9996',
@@ -12,6 +13,23 @@ const request = axios.create({
       return data
     }
   }]
+})
+
+// 请求拦截器
+// Add a request interceptor
+request.interceptors.request.use(function (config) {
+  // Do something before request is sent
+  const token = store.getters.getToken
+  console.log('interceptors', token)
+  if (token !== null && token !== '') {
+    console.log('axios.interceptors ', config)
+    config.headers.token = `${token}`
+    console.log('axios.interceptors2 ', config)
+  }
+  return config
+}, function (error) {
+  // Do something with request error
+  return Promise.reject(error)
 })
 
 export default request

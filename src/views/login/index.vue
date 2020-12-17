@@ -94,15 +94,31 @@ export default {
       })
     },
     doLogin () {
+      this.isShowLoading = true
       console.log('dologin')
       login({
         phone: this.user.phone,
         password: this.user.password
-      }).then((result) => {
-        console.log(result)
-      }).catch((error) => {
-        console.log(error)
       })
+        .then((result) => {
+          this.isShowLoading = false
+          console.log('aaaaa', result)
+          if (result.data.code === 100) {
+            this.$message({
+              type: 'success',
+              message: '登录成功!'
+            })
+            this.$store.commit('saveToken', result.data.data)
+            this.$router.push({
+              name: 'main'
+            })
+          } else {
+            this.$message.error(result.message)
+          }
+        }).catch(() => {
+          this.isShowLoading = false
+          this.$message.error('登录失败，请检查服务器')
+        })
     }
   }
 }
