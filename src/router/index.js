@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '@/views/login/'
 import Main from '@/views/main/'
-import Data from '@/views/data'
+import Dashboard from '@/views/dashboard'
 import allfile from '@/views/file/'
 import alluser from '@/views/user/alluser.vue'
 import loginlog from '@/views/user/loginlog.vue'
@@ -27,7 +27,7 @@ const routes = [
     children: [
       {
         path: '',
-        component: Data
+        component: Dashboard
       },
       {
         path: '/allfile',

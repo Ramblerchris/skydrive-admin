@@ -24,6 +24,7 @@ request.interceptors.request.use(function (config) {
   if (token !== null && token !== '') {
     console.log('axios.interceptors ', config)
     config.headers.token = `${token}`
+    //  config.headers['token'] = `${token}`
     console.log('axios.interceptors2 ', config)
   }
   return config

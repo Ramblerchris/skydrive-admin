@@ -1,9 +1,9 @@
 <template>
-    <div class="data-container">data</div>
+    <div class="dashboard-container">dashboard</div>
 </template>
 <script>
 export default {
-  name: 'data'
+  name: 'dashboard'
 }
 </script>
 <style scoped>

@@ -8,15 +8,14 @@
         <div class="headerleft">
           <i :class="{
             'el-icon-s-fold':isCollapse,
-            'el-icon-s-unfold':!isCollapse
-          }"
+            'el-icon-s-unfold':!isCollapse}"
            v-on:click = "isCollapse = !isCollapse"></i>
-         <span >内容测试一下就好</span>
+         <span>内容测试一下就好</span>
         </div>
        <el-dropdown trigger="click">
         <div class="headerright">
-          <img class="headericon" v-bind:src="userinfo.photo"/>
-          <span>{{userinfo.name}}</span>
+          <img class="headericon" v-bind:src="getPhotoUrl"/>
+          <span>{{userinfo.user_name}}</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </div>
        <el-dropdown-menu slot="dropdown">
@@ -26,14 +25,16 @@
        </el-dropdown>
       </el-header>
       <el-main class="main" >
-        <router-view />
+        <keep-alive >
+          <router-view :key="key" />
+        </keep-alive>
       </el-main>
     </el-container>
   </el-container>
 </template>
 <script>
 import layoutaside from '@/components/aside.vue'
-//  import { getUserinfo } from '@/api/user.js'
+import { getUserinfo } from '@/api/user.js'
 import GlobalBus from '@/utils/global-bus.js'
 export default {
   name: 'Layout',
@@ -49,19 +50,19 @@ export default {
   created () {
     this.getUserinfoRe()
     GlobalBus.$on('updateuser', (data) => {
-      this.userinfo.name = data.name
-      this.userinfo.photo = data.photo
+      //  this.userinfo.name = data.name
+      //  this.userinfo.photo = data.photo
     })
   },
   methods: {
     getUserinfoRe () {
-    //   getUserinfo()
-    //     .then((result) => {
-    //       console.log(' getUserinfo', result)
-    //       this.userinfo = result.data.data
-    //     }).catch((err) => {
-    //       console.log(err)
-    //     })
+      getUserinfo()
+        .then((result) => {
+          console.log(' getUserinfo', result)
+          this.userinfo = result.data.data
+        }).catch((err) => {
+          console.log(err)
+        })
     },
     logout () {
       console.log('退出')
@@ -79,6 +80,14 @@ export default {
           name: 'login'
         })
       }).catch(() => { })
+    }
+  },
+  computed: {
+    key () {
+      return this.$route.path
+    },
+    getPhotoUrl () {
+      return this.userinfo.photo_addr
     }
   }
 }

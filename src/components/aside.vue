@@ -40,7 +40,7 @@
           <el-menu-item index="/deletefile">已删除列表</el-menu-item>
           <el-menu-item index="/publishshare">共享文件夹</el-menu-item>
     </el-submenu>
-     <el-submenu  >
+     <el-submenu index="/112-1" >
         <template slot="title">
           <i class="el-icon-location"></i>
           <span>影视管理</span>

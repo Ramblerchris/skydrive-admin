@@ -1,9 +1,9 @@
 import request from '@/utils/request.js'
 
-export const getAllUserFile = (params) => {
+export const getAllFileList = (params) => {
   return request({
     method: 'GET',
-    url: '/admin/allUserFileList',
+    url: '/admin/allFileList',
     params
   })
 }
