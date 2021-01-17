@@ -13,33 +13,37 @@
           <el-table-column
             prop="id"
             label="ID"
-            width="180">
+            width="120">
           </el-table-column>
           <el-table-column
             prop="uid"
             label="用户ID"
-            width="180">
+            width="120">
           </el-table-column>
           <el-table-column
             prop="phone"
-            label="手机号">
+            label="手机号"
+            width="180">
           </el-table-column>
            <el-table-column
             prop="utoken"
             label="token">
           </el-table-column>
            <el-table-column
-            prop="expretime"
             label="过期时间">
+            <template slot-scope="scope">
+               {{expretimeStr(scope.row.expretime)}}
+            </template>
           </el-table-column>
            <el-table-column
             label="是否过期">
             <template slot-scope="scope">
-               {{scope.row.status != 1? '正常' : '过期'}}
+               {{scope.row.expretime.valueOf()>currentTime? '正常' : '过期'}}
             </template>
           </el-table-column>
            <el-table-column
-            label="操作">
+            label="操作"
+             width="120">
             <template  slot-scope="scope">
               <el-switch
               @change="changeSwitch"
@@ -63,6 +67,7 @@
 </template>
 <script>
 import { allAllUserTokenList } from '@/api/user.js'
+import utils from '@/utils/utils.js'
 export default {
   name: 'tokenlist',
   data () {
@@ -70,7 +75,8 @@ export default {
       tableData: [],
       total: 0,
       pageSize: 10,
-      loading: false
+      loading: false,
+      currentTime: 0
     }
   },
   created () {
@@ -87,6 +93,7 @@ export default {
         .then((result) => {
           this.loading = false
           console.log('result', result)
+          this.currentTime = (new Date()).getTime()
           this.tableData = result.data.data.list
           this.total = result.data.data.total
         }).catch((error) => {
@@ -99,6 +106,9 @@ export default {
     },
     changeSwitch (value) {
       console.log(value)
+    },
+    expretimeStr (datetime) {
+      return utils.expretimeStr(datetime)
     }
   }
 }

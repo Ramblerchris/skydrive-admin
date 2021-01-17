@@ -39,7 +39,8 @@
             </template>
           </el-table-column>
            <el-table-column
-            label="操作">
+            label="操作"
+             width="120">
             <template  slot-scope="scope">
               <el-switch
               @change="changeSwitch"

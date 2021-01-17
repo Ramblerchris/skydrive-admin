@@ -17,25 +17,27 @@
           </el-table-column>
           <el-table-column
             prop="sha1"
-            label="文件sha1"
-            width="100">
+            label="文件sha1">
           </el-table-column>
            <el-table-column
-            prop="time"
+            prop="createattimestr"
             label="创建时间"
-            width="100">
+            width="220">
            </el-table-column>
             <el-table-column
-            prop="size"
             label="文件大小"
             width="180">
+            <template  slot-scope="scope">
+              {{formatDiskSize(scope.row.size)}}
+            </template>
           </el-table-column>
           <el-table-column
             prop="path"
             label="文件路径">
           </el-table-column>
            <el-table-column
-            label="操作">
+            label="操作"
+             width="120">
             <template  slot-scope="scope">
               <el-switch
               @change="changeSwitch"
@@ -59,6 +61,7 @@
 </template>
 <script>
 import { getAllFileList } from '@/api/file.js'
+import utils from '@/utils/utils.js'
 export default {
   name: 'allfile',
   data () {
@@ -95,6 +98,9 @@ export default {
     },
     changeSwitch (value) {
       console.log(value)
+    },
+    formatDiskSize (value) {
+      return utils.formatDiskSize(value)
     }
   }
 }

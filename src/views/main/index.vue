@@ -107,7 +107,7 @@ export default {
         background: white;
         display: flex;
         flex-direction:row;
-        border-bottom: 0.5px solid #999999;
+        // border-bottom: 0.2px solid #545c64;
         .headerleft {
           flex: 1;
           justify-content: flex-start;
