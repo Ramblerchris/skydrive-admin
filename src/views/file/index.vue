@@ -10,6 +10,10 @@
         v-loading="loading"
           :data="tableData"
           style="width: 100%">
+            <el-table-column
+      type="index"
+      width="50">
+    </el-table-column>
           <el-table-column
             prop="id"
             label="ID"
@@ -52,8 +56,10 @@
         :disabled="loading"
         class="pagination"
         background
+        @size-change="handleSizeChange"
          @current-change="selectCurrentPage"
-        layout="total, prev, pager, next, jumper"
+        layout="total,sizes, prev, pager, next, jumper"
+        :page-sizes="[10, 20, 30, 40, 50]"
         :page-size="pageSize"
         :total="total">
        </el-pagination>
@@ -95,6 +101,11 @@ export default {
     },
     selectCurrentPage (page) {
       this.getListData(page)
+    },
+    handleSizeChange (val) {
+      console.log(`每页 ${val} 条`)
+      this.pageSize = val
+      this.getListData()
     },
     changeSwitch (value) {
       console.log(value)
