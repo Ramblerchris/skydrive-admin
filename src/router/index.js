@@ -11,6 +11,7 @@ import deletefile from '@/views/userfile/deletefile.vue'
 import dir from '@/views/userfile/dir.vue'
 import publishshare from '@/views/userfile/publishshare.vue'
 import setting from '@/views/setting/'
+import alluserfile from '@/views/userfile/alluserfile.vue'
 import store from '@/store/index.js'
 
 Vue.use(VueRouter)
@@ -45,6 +46,10 @@ const routes = [
       {
         path: '/tokenlist',
         component: tokenlist
+      },
+      {
+        path: '/alluserfile',
+        component: alluserfile
       },
       {
         path: '/deletefile',

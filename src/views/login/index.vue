@@ -18,7 +18,7 @@
         :click-effect="true"
         click-mode="push"/>
       <div class='login-container'>
-        <div class="login-logo">XXX管理系统</div>
+        <div class="login-logo">SkyDrive管理系统</div>
         <!-- 表单验证： :rules="rules"  prop='mobile'  对应的是v-model='user.mobile' 中的mobile-->
         <el-form
         class='login-form'

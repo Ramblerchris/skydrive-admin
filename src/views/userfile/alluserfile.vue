@@ -3,7 +3,7 @@
     <div slot="header" class="clearfix">
        <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item><a href="/">文件管理</a></el-breadcrumb-item>
+        <el-breadcrumb-item><a href="/">用户文件管理</a></el-breadcrumb-item>
        </el-breadcrumb>
       </div>
         <el-table
@@ -15,24 +15,36 @@
             label="ID"
             width="100">
           </el-table-column>
+           <el-table-column
+            label="文件类型" width="100">
+            <template slot-scope="scope">
+               {{scope.row.type == 1? '文件夹' : '文件'}}
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="filename"
+            label="文件名称"
+            width="100">
+          </el-table-column>
           <el-table-column
             prop="sha1"
             label="文件sha1"
             width="100">
           </el-table-column>
            <el-table-column
-            prop="time"
+            prop="createattimestr"
             label="创建时间"
+            width="100">
+           </el-table-column>
+           <el-table-column
+            prop="updatattimestr"
+            label="更新时间"
             width="100">
            </el-table-column>
             <el-table-column
             prop="size"
             label="文件大小"
             width="180">
-          </el-table-column>
-          <el-table-column
-            prop="path"
-            label="文件路径">
           </el-table-column>
            <el-table-column
             label="操作">
@@ -44,6 +56,10 @@
               inactive-color="#ff4949">
             </el-switch>
             </template>
+          </el-table-column>
+          <el-table-column
+            prop="path"
+            label="文件路径">
           </el-table-column>
        </el-table>
         <el-pagination
@@ -58,9 +74,9 @@
   </el-card>
 </template>
 <script>
-import { getAllFileList } from '@/api/file.js'
+import { getAllUserFile } from '@/api/userfile.js'
 export default {
-  name: 'allfile',
+  name: 'alluserfile',
   data () {
     return {
       tableData: [],
@@ -76,7 +92,7 @@ export default {
   methods: {
     getListData (page = 1) {
       this.loading = true
-      getAllFileList({
+      getAllUserFile({
         pageSize: this.pageSize,
         pageNo: page
       })

@@ -29,18 +29,19 @@
         </el-menu-item-group> -->
         <el-menu-item class="level-2" index="/alluser">所有用户</el-menu-item>
         <el-menu-item class="level-2" index="/tokenlist">认证管理</el-menu-item>
-        <el-menu-item class="level-2" index="/loginlog">登录日志</el-menu-item>
+        <!-- <el-menu-item class="level-2" index="/loginlog">登录日志</el-menu-item> -->
     </el-submenu>
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
           <span>用户文件</span>
         </template>
+          <el-menu-item index="/alluserfile">所有用户管理</el-menu-item>
           <el-menu-item index="/dir">文件夹管理</el-menu-item>
           <el-menu-item index="/deletefile">已删除列表</el-menu-item>
           <el-menu-item index="/publishshare">共享文件夹</el-menu-item>
     </el-submenu>
-     <el-submenu index="/112-1" >
+     <!-- <el-submenu index="/112-1" >
         <template slot="title">
           <i class="el-icon-location"></i>
           <span>影视管理</span>
@@ -48,7 +49,7 @@
           <el-menu-item index="112-1">新增电影</el-menu-item>
           <el-menu-item index="112-2">新增剧集</el-menu-item>
           <el-menu-item index="112-2">推荐管理</el-menu-item>
-    </el-submenu>
+    </el-submenu> -->
      <el-menu-item index="/setting">
       <i class="el-icon-s-comment"></i>
       <span slot="title">系统设置</span>
