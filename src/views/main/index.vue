@@ -14,7 +14,7 @@
         </div>
        <el-dropdown trigger="click">
         <div class="headerright">
-          <img class="headericon" v-bind:src="getPhotoUrl"/>
+          <img class="headericon" v-bind:src="$store.getters.getImageUrl(userinfo.photo_file_sha1)"/>
           <span>{{userinfo.user_name}}</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </div>
@@ -33,6 +33,7 @@
   </el-container>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import layoutaside from '@/components/aside.vue'
 import { getUserinfo } from '@/api/user.js'
 import GlobalBus from '@/utils/global-bus.js'
@@ -55,6 +56,7 @@ export default {
     })
   },
   methods: {
+    ...mapGetters(['getImageUrl']),
     getUserinfoRe () {
       getUserinfo()
         .then((result) => {
@@ -75,7 +77,8 @@ export default {
           type: 'success',
           message: '退出成功!'
         })
-        window.localStorage.removeItem('user')
+        // window.localStorage.removeItem('user')
+        this.$store.commit('loginOut')
         this.$router.push({
           name: 'login'
         })
@@ -85,9 +88,6 @@ export default {
   computed: {
     key () {
       return this.$route.path
-    },
-    getPhotoUrl () {
-      return this.userinfo.photo_addr
     }
   }
 }
