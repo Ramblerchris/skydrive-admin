@@ -36,9 +36,9 @@
           <i class="el-icon-location"></i>
           <span>用户文件</span>
         </template>
-          <el-menu-item index="/alluserfile">所有用户管理</el-menu-item>
-          <el-menu-item index="/dir">文件夹管理</el-menu-item>
-          <el-menu-item index="/deletefile">已删除列表</el-menu-item>
+          <el-menu-item index="/alluserfile">用户文件</el-menu-item>
+          <el-menu-item index="/dir">文件夹</el-menu-item>
+          <el-menu-item index="/deletefile">已删除</el-menu-item>
           <el-menu-item index="/publishshare">共享文件夹</el-menu-item>
     </el-submenu>
      <!-- <el-submenu index="/112-1" >
