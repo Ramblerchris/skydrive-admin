@@ -14,7 +14,7 @@
         </div>
        <el-dropdown trigger="click">
         <div class="headerright">
-          <img class="headericon" v-bind:src="$store.getters.getImageUrl(userinfo.photo_file_sha1)"/>
+          <img class="headericon" v-bind:src="$store.getters.getImageUrlQ(userinfo.photo_file_sha1)"/>
           <span>{{userinfo.user_name}}</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </div>

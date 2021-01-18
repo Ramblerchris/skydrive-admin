@@ -11,9 +11,26 @@
           :data="tableData"
           style="width: 100%">
             <el-table-column
-      type="index"
-      width="50">
-    </el-table-column>
+            type="index"
+            width="50">
+          </el-table-column>
+           <el-table-column prop="date"
+          align="center" label="图" width="180">
+          <template slot-scope="scope">
+          <!--  <img v-if="scope.row.cover.type == 1"
+                  style="width:100px;height:100px;"
+                   :src="scope.row.cover.images[0]">
+                  <img v-else style="width:100px;height:100px;" :src="defaulturl"> -->
+                  <!-- {{":"+$store.getters.getImageUrl(scope.row.sha1)}} -->
+             <el-image
+              style="width: 100px; height: 100px"
+              :src="$store.getters.getImageUrlQ(scope.row.sha1)"
+              :preview-src-list="[$store.getters.getImageUrl(scope.row.sha1)]"
+              fit="contain"
+              lazy>
+            </el-image>
+          </template>
+        </el-table-column>
           <el-table-column
             prop="id"
             label="ID"

@@ -51,6 +51,11 @@ export default new Vuex.Store({
       const token = state.token
       console.log(' token', token)
       return (sha1) => `${config.BaseUrl}/file/open?token=${token}&filesha1=${sha1}`
+    },
+    getImageUrlQ (state) {
+      const token = state.token
+      console.log(' token', token)
+      return (sha1) => `${config.BaseUrl}/file/open?token=${token}&filesha1=${sha1}&q=10`
     }
   },
   modules: {
