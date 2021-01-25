@@ -49,8 +49,8 @@ export default {
   data () {
     return {
       user: {
-        phone: '15038267031',
-        password: '123456'
+        phone: '',
+        password: ''
       },
       isShowLoading: false,
       rules: {
