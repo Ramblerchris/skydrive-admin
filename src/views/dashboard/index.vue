@@ -20,6 +20,7 @@
 import * as echarts from 'echarts'
 import { getSystemInfo } from '@/api/sysinfo.js'
 import utils from '@/utils/utils.js'
+// import { number } from 'echarts'
 
 export default {
   name: 'allUser',
@@ -213,7 +214,8 @@ export default {
         })
     },
     setCpuInfo () {
-      this.cpuOption.series[0].data[0].value = this.tableData.CpuPercent.toNumber().toFixed(2)
+      console.log('3333', typeof (this.tableData.CpuPercent))
+      this.cpuOption.series[0].data[0].value = typeof (this.tableData.CpuPercent) === 'number' ? this.tableData.CpuPercent : this.tableData.CpuPercent.toNumber().toFixed(2)
       this.cpuView.setOption(this.cpuOption, true)
       // const date = new Date()
       // const nowHours = utils.timeAdd0(date.getHours().toString())
