@@ -8,6 +8,10 @@
     active-text-color="#ffd04b"
     router
   >
+      <!-- :default-active="$route.path"
+        :default-active="'/dashbboard'"
+       -->
+
   <!-- router 开启路由模式 -->
     <el-menu-item index="/">
       <i class="el-icon-s-home"></i>
@@ -67,6 +71,9 @@ export default {
     handleClose (key, keyPath) {
       console.log(key, keyPath)
     }
+  },
+  created () {
+    // this.$route.path = '/dashbboard'
   }
 }
 </script>

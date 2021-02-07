@@ -29,7 +29,15 @@ const routes = [
     children: [
       {
         path: '',
-        component: Dashboard
+        // path: '',
+        component: Dashboard,
+        name: 'Default'
+      },
+      {
+        path: '/',
+        // path: '',
+        component: Dashboard,
+        name: 'Dashboard'
       },
       {
         path: '/allfile',
