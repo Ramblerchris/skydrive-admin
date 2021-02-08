@@ -6,9 +6,14 @@
         <el-breadcrumb-item><a href="/">系统信息</a></el-breadcrumb-item>
        </el-breadcrumb>
         <div class="home-container">
-           <div ref="cpuView" style="flex:1 ;width: 400px;height:400px;"></div>
-           <div ref="memView" style="flex:1 ;width: 400px;height:400px;"></div>
-           <div ref="diskView" style="flex:1 ;width: 400px;height:400px;"></div>
+           <!-- <div  class="title"  >CPU</div>
+           <div   class="title"  >内存</div>
+           <div  class="title"  >磁盘</div> -->
+       </div>
+        <div class="home-container">
+           <div class="viewcontent"><div ref="cpuView" class="chview"></div><span>CPU</span></div>
+           <div class="viewcontent"><div ref="memView"  class="chview"></div><span>内存</span></div>
+           <div class="viewcontent"><div ref="diskView"  class="chview"></div><span>磁盘</span></div>
        </div>
        <!-- <div class="home-container">
            <div ref="cpuViewlist" style="flex:1 ;width: 1000px;height:400px;"></div>
@@ -215,7 +220,7 @@ export default {
     },
     setCpuInfo () {
       console.log('3333', typeof (this.tableData.CpuPercent))
-      this.cpuOption.series[0].data[0].value = typeof (this.tableData.CpuPercent) === 'number' ? this.tableData.CpuPercent : this.tableData.CpuPercent.toNumber().toFixed(2)
+      this.cpuOption.series[0].data[0].value = utils.isNumber(this.tableData.CpuPercent) ? this.tableData.CpuPercent : this.tableData.CpuPercent.toNumber().toFixed(2)
       this.cpuView.setOption(this.cpuOption, true)
       // const date = new Date()
       // const nowHours = utils.timeAdd0(date.getHours().toString())
@@ -228,7 +233,7 @@ export default {
       // })
     },
     setMemInfo () {
-      this.memOption.series[0].data[0].value = this.tableData.MemPercent.toNumber().toFixed(2)
+      this.memOption.series[0].data[0].value = utils.isNumber(this.tableData.MemPercent) ? this.tableData.MemPercent : this.tableData.MemPercent.toNumber().toFixed(2)
       if (utils.isNndeNull(this.tableData.MemTotal)) {
         this.memOption.series[0].data[0].name = '--'
       } else {
@@ -240,7 +245,8 @@ export default {
       if (this.diskOption.series[0].data) {
         this.diskOption.series[0].data.length = 0
       }
-      var usered = this.tableData.DiskPercent.toNumber().toFixed(2) * this.tableData.DiskTotal / 100
+      const diskPercent = utils.isNumber(this.tableData.DiskPercent) ? this.tableData.DiskPercent : this.tableData.DiskPercent.toNumber().toFixed(2)
+      var usered = diskPercent * this.tableData.DiskTotal / 100
       var empty = this.tableData.DiskTotal - usered
       console.log('result222', this.tableData.DiskTotal)
       console.log('result111', usered + ' ' + empty)
@@ -261,5 +267,25 @@ export default {
     .home-container {
         background: white;
         display: flex;
+    }
+    .title {
+      margin-top: 10px;
+      flex:1 ;
+      text-align: center;
+      size: 30px;
+      font-weight: 900;
+    }
+    .viewcontent {
+      flex:1 ;
+    }
+    .viewcontent span {
+      flex:1 ;
+      text-align: center;
+      size: 30px;
+      font-weight: 900;
+    }
+     .chview {
+      flex:1 ;
+      height: 400px;
     }
 </style>

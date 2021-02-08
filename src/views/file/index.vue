@@ -22,7 +22,8 @@
                    :src="scope.row.cover.images[0]">
                   <img v-else style="width:100px;height:100px;" :src="defaulturl"> -->
                   <!-- {{":"+$store.getters.getImageUrl(scope.row.sha1)}} -->
-             <el-image
+             <span  v-if="scope.row.type == 1">文件夹</span>
+           <el-image  v-else
               style="width: 100px; height: 100px"
               :src="$store.getters.getImageUrlQ(scope.row.sha1)"
               :preview-src-list="[$store.getters.getImageUrl(scope.row.sha1)]"
