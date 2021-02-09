@@ -5,11 +5,10 @@
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item><a href="/">系统信息</a></el-breadcrumb-item>
        </el-breadcrumb>
-        <div class="home-container">
-           <!-- <div  class="title"  >CPU</div>
-           <div   class="title"  >内存</div>
-           <div  class="title"  >磁盘</div> -->
-       </div>
+        <!-- <div class="home-container">
+           <div  class="titleinfo"  >用户</div>
+           <div   class="titleinfo"  >文件数</div>
+       </div> -->
         <div class="home-container">
            <div class="viewcontent"><div ref="cpuView" class="chview"></div><span>CPU</span></div>
            <div class="viewcontent"><div ref="memView"  class="chview"></div><span>内存</span></div>
@@ -31,6 +30,7 @@ export default {
   name: 'allUser',
   data () {
     return {
+      timeId: 0,
       startTime: null,
       cpuListData: [],
       endTime: null,
@@ -169,7 +169,7 @@ export default {
   },
   created () {
     this.getListData(true)
-    setInterval(() => {
+    this.timeId = setInterval(() => {
       this.getListData()
     }, 2000)
     // this.startTime = new Date().getTime() - 60 * 1000
@@ -200,6 +200,9 @@ export default {
     // this.cpuViewlist = echarts.init(this.$refs.cpuViewlist)
     // this.cpuViewlist.setOption(this.cpuOptionList)
   },
+  destroyed () {
+    clearInterval(this.timeId)
+  },
   methods: {
     getListData (init) {
       if (init) {
@@ -220,7 +223,7 @@ export default {
     },
     setCpuInfo () {
       console.log('3333', typeof (this.tableData.CpuPercent))
-      this.cpuOption.series[0].data[0].value = utils.isNumber(this.tableData.CpuPercent) ? this.tableData.CpuPercent : this.tableData.CpuPercent.toNumber().toFixed(2)
+      this.cpuOption.series[0].data[0].value = utils.isNumber(this.tableData.CpuPercent) ? this.tableData.CpuPercent.toFixed(2) : this.tableData.CpuPercent.toNumber().toFixed(2)
       this.cpuView.setOption(this.cpuOption, true)
       // const date = new Date()
       // const nowHours = utils.timeAdd0(date.getHours().toString())
@@ -233,7 +236,7 @@ export default {
       // })
     },
     setMemInfo () {
-      this.memOption.series[0].data[0].value = utils.isNumber(this.tableData.MemPercent) ? this.tableData.MemPercent : this.tableData.MemPercent.toNumber().toFixed(2)
+      this.memOption.series[0].data[0].value = utils.isNumber(this.tableData.MemPercent) ? this.tableData.MemPercent.toFixed(2) : this.tableData.MemPercent.toNumber().toFixed(2)
       if (utils.isNndeNull(this.tableData.MemTotal)) {
         this.memOption.series[0].data[0].name = '--'
       } else {
@@ -245,7 +248,7 @@ export default {
       if (this.diskOption.series[0].data) {
         this.diskOption.series[0].data.length = 0
       }
-      const diskPercent = utils.isNumber(this.tableData.DiskPercent) ? this.tableData.DiskPercent : this.tableData.DiskPercent.toNumber().toFixed(2)
+      const diskPercent = utils.isNumber(this.tableData.DiskPercent) ? this.tableData.DiskPercent.toFixed(2) : this.tableData.DiskPercent.toNumber().toFixed(2)
       var usered = diskPercent * this.tableData.DiskTotal / 100
       var empty = this.tableData.DiskTotal - usered
       console.log('result222', this.tableData.DiskTotal)
@@ -270,6 +273,13 @@ export default {
     }
     .title {
       margin-top: 10px;
+      flex:1 ;
+      text-align: center;
+      size: 30px;
+      font-weight: 900;
+    }
+    .titleinfo {
+      height: 100px;
       flex:1 ;
       text-align: center;
       size: 30px;
