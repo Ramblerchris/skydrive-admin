@@ -1,4 +1,5 @@
 const utils = {
+  //  存储大小格式化
   formatDiskSize (limit) {
     var size = ''
     if (limit < 0.1 * 1024) {
@@ -23,18 +24,21 @@ const utils = {
     }
     return sizestr
   },
+  //  时间加0
   timeAdd0 (str) {
     if (str.length <= 1) {
       str = '0' + str
     }
     return str
   },
+  //  是否是数字
   isNumber (input) {
     if (input && typeof (input) === 'number') {
       return true
     }
     return false
   },
+  //  日期格式化
   expretimeStr (datetime) {
     //  时间戳为10位需*1000，时间戳为13位的话不需乘1000
     var date = new Date(datetime)

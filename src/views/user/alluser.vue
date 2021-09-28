@@ -17,7 +17,7 @@
           <el-table-column
             prop="id"
             label="ID"
-            width="120">
+            width="80">
           </el-table-column>
           <el-table-column
             prop="user_name"

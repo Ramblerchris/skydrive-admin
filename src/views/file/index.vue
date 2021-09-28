@@ -12,7 +12,7 @@
           style="width: 100%">
             <el-table-column
             type="index"
-            width="30">
+            width="40">
           </el-table-column>
            <el-table-column prop="date"
           align="center" label="图" width="180">
@@ -35,7 +35,7 @@
           <el-table-column
             prop="id"
             label="ID"
-            width="100">
+            width="80">
           </el-table-column>
           <el-table-column
             prop="sha1"
@@ -44,30 +44,19 @@
            <el-table-column
             prop="createattimestr"
             label="创建时间"
-            width="220">
+            width="200">
            </el-table-column>
             <el-table-column
             label="文件大小"
-            width="180">
+            width="80">
             <template  slot-scope="scope">
               {{formatDiskSize(scope.row.size)}}
             </template>
           </el-table-column>
           <el-table-column
             prop="path"
-            label="文件路径">
-          </el-table-column>
-           <el-table-column
-            label="操作"
-             width="120">
-            <template  slot-scope="scope">
-              <el-switch
-              @change="changeSwitch"
-              v-model="scope.row.comment_status"
-              active-color="#13ce66"
-              inactive-color="#ff4949">
-            </el-switch>
-            </template>
+            label="文件路径"
+            width="180">
           </el-table-column>
        </el-table>
         <el-pagination

@@ -19,7 +19,7 @@
           <i class="el-icon-arrow-down el-icon--right"></i>
         </div>
        <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item icon="el-icon-setting">设置</el-dropdown-item>
+        <el-dropdown-item icon="el-icon-setting" v-on:click.native="setting">设置</el-dropdown-item>
         <el-dropdown-item icon="el-icon-user" v-on:click.native="logout" >退出登录</el-dropdown-item>
        </el-dropdown-menu>
        </el-dropdown>
@@ -83,6 +83,12 @@ export default {
           name: 'login'
         })
       }).catch(() => { })
+    },
+    setting () {
+      console.log('setting')
+      this.$router.push({
+        name: 'setting'
+      })
     }
   },
   computed: {

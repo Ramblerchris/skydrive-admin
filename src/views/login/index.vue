@@ -30,7 +30,7 @@
             <el-input v-model='user.phone' placeholder='请输入账号'></el-input>
           </el-form-item>
           <el-form-item  prop='password' >
-            <el-input v-model='user.password' placeholder='请输入密码' ></el-input>
+            <el-input v-model='user.password' placeholder='请输入密码' show-password></el-input>
           </el-form-item>
           <!-- <el-form-item prop='isagree'>
             <el-checkbox v-model='user.isagree' type='boolean' >请阅读用户隐私协议和用户协议</el-checkbox>

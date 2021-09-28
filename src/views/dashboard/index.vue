@@ -3,7 +3,7 @@
     <div slot="header" class="clearfix">
        <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item><a href="/">系统信息</a></el-breadcrumb-item>
+        <el-breadcrumb-item><a href="/">主机：{{HostName}} OS:{{os}}（V{{platformVersion}}）开机时间：{{bootTime}}</a></el-breadcrumb-item>
        </el-breadcrumb>
         <!-- <div class="home-container">
            <div  class="titleinfo"  >用户</div>
@@ -27,9 +27,12 @@ import utils from '@/utils/utils.js'
 // import { number } from 'echarts'
 
 export default {
-  name: 'allUser',
   data () {
     return {
+      HostName: '',
+      bootTime: '',
+      os: '',
+      platformVersion: '',
       timeId: 0,
       startTime: null,
       cpuListData: [],
@@ -213,6 +216,10 @@ export default {
           this.loading = false
           // console.log('result', result)
           this.tableData = result.data.data
+          this.HostName = this.tableData.HostName
+          this.os = this.tableData.hostInfo.os
+          this.bootTime = utils.expretimeStr(this.tableData.hostInfo.bootTime * 1000)
+          this.platformVersion = this.tableData.hostInfo.platformVersion
           this.setCpuInfo()
           this.setDiskInfo()
           this.setMemInfo()

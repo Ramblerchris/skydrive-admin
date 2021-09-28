@@ -12,7 +12,7 @@
           style="width: 100%">
             <el-table-column
             type="index"
-            width="50">
+            width="40">
           </el-table-column>
            <el-table-column prop="date"
           align="center" label="图" width="180">
@@ -47,7 +47,7 @@
           <el-table-column
             prop="filename"
             label="文件名称"
-            width="300">
+            width="200">
           </el-table-column>
           <el-table-column
             prop="sha1"
@@ -57,28 +57,28 @@
            <el-table-column
             prop="createattimestr"
             label="创建时间"
-            width="200">
+            width="180">
            </el-table-column>
            <el-table-column
             prop="updatattimestr"
             label="更新时间"
-            width="200">
+            width="180">
            </el-table-column>
             <el-table-column
             label="文件大小"
-            width="100">
+            width="80">
             <template  slot-scope="scope">
                 {{formatDiskSize(scope.row.size)}}
             </template>
           </el-table-column>
           <el-table-column
             prop="path"
-            label="文件路径">
+            label="文件路径"
+            width="180">
           </el-table-column>
           <el-table-column
             label="操作"
-            width="120"
-            >
+            width="120">
             <template  slot-scope="scope">
               <el-switch
               @change="changeSwitch"

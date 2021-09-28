@@ -58,6 +58,10 @@
       <i class="el-icon-s-comment"></i>
       <span slot="title">系统设置</span>
     </el-menu-item>
+      <el-menu-item index="/testpage">
+      <i class="el-icon-s-comment"></i>
+      <span slot="title">测试页面</span>
+    </el-menu-item>
   </el-menu>
 </template>
 <script>

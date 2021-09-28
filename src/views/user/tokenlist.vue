@@ -17,21 +17,22 @@
           <el-table-column
             prop="id"
             label="ID"
-            width="50">
+            width="80">
           </el-table-column>
           <el-table-column
             prop="uid"
             label="用户ID"
-            width="120">
+            width="80">
           </el-table-column>
           <el-table-column
             prop="phone"
             label="手机号"
-            width="180">
+            width="160">
           </el-table-column>
            <el-table-column
             prop="utoken"
-            label="token">
+            label="token"
+            width="280">
           </el-table-column>
            <el-table-column
             label="过期时间">
