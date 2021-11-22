@@ -18,7 +18,8 @@
         :click-effect="true"
         click-mode="push"/>
       <div class='login-container'>
-        <div class="login-logo">SkyDrive管理系统</div>
+        <!-- <div class="login-logo">SkyDrive管理系统</div> -->
+         <div class="login-logo"></div>
         <!-- 表单验证： :rules="rules"  prop='mobile'  对应的是v-model='user.mobile' 中的mobile-->
         <el-form
         class='login-form'
@@ -56,8 +57,8 @@ export default {
       rules: {
         phone: [
           { required: true, message: '请输入账号', trigger: 'blur' },
-          { pattern: /^1[3|5|6|7|8|9]\d{9}$/, message: '必须为手机号', trigger: 'change' },
-          { min: 3, max: 11, message: '账号格式错误，长度在3-11位', trigger: 'change' }
+          // { pattern: /^1[3|5|6|7|8|9]\d{9}$/, message: '必须为手机号', trigger: 'change' },
+          { min: 3, max: 18, message: '账号格式错误，长度在3-11位', trigger: 'change' }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' }
@@ -97,7 +98,7 @@ export default {
       this.isShowLoading = true
       console.log('dologin')
       login({
-        phone: this.user.phone,
+        username: this.user.phone,
         password: this.user.password
       })
         .then((result) => {
@@ -113,7 +114,7 @@ export default {
               name: 'main'
             })
           } else {
-            this.$message.error(result.message)
+            this.$message.error(result.data.message)
           }
         }).catch(() => {
           this.isShowLoading = false

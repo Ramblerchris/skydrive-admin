@@ -10,12 +10,13 @@
             'el-icon-s-fold':isCollapse,
             'el-icon-s-unfold':!isCollapse}"
            v-on:click = "isCollapse = !isCollapse"></i>
-         <span>SkyDrive管理</span>
+         <span>XXX</span>
         </div>
        <el-dropdown trigger="click">
         <div class="headerright">
-          <img class="headericon" v-bind:src="$store.getters.getImageUrlQ(userinfo.photo_file_sha1)"/>
-          <span>{{userinfo.user_name}}</span>
+          <el-avatar size="medium" alt="头像" icon="el-icon-user-solid" src="$store.getters.getImageUrlQ(userinfo.photo_file_sha1)"></el-avatar>
+          <!-- <img class="headericon" v-bind:src="$store.getters.getImageUrlQ(userinfo.photo_file_sha1)"/> -->
+          <span>{{userinfo.admin_name}}</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </div>
        <el-dropdown-menu slot="dropdown">

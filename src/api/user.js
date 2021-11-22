@@ -3,7 +3,7 @@ import request from '@/utils/request.js'
 export const login = (user) => {
   return request({
     method: 'POST',
-    url: '/user/signin',
+    url: '/admin/login',
     params: user
   })
 }
@@ -11,14 +11,14 @@ export const login = (user) => {
 export const getUserinfo = () => {
   return request({
     method: 'GET',
-    url: '/user/getuserinfo'
+    url: '/admin/getuserinfo'
   })
 }
 
 export const signout = () => {
   return request({
     method: 'GET',
-    url: '/user/signout'
+    url: '/admin/signout'
   })
 }
 
