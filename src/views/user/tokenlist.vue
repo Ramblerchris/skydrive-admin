@@ -6,6 +6,39 @@
         <el-breadcrumb-item><a href="/">认证管理</a></el-breadcrumb-item>
        </el-breadcrumb>
       </div>
+       <el-form ref="form"  label-width="60px" size="mini" class="selecform" >
+        <el-form-item label="状态">
+          <el-radio-group v-model="status">
+            <el-radio :label="null">全部</el-radio>
+            <el-radio :label="0">过期</el-radio>
+            <el-radio :label="1">未过期</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item label="手机号" >
+          <!-- v-model="input" -->
+          <el-input style="width:300px;" placeholder="请输入手机号"
+          clearable='true'
+          v-model="text"
+          maxlength="12"
+          show-word-limit></el-input>
+        </el-form-item>
+        <el-form-item label="日期">
+          <el-date-picker
+            v-model="datarange"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            format="yyyy-MM-dd"
+            value-format="yyyy-MM-dd"
+          >
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" :disabled="loading" @click="getArticles(1)">筛选</el-button>
+          <el-button type="info" :disabled="loading"  @click="reset()">重置</el-button>
+        </el-form-item>
+      </el-form>
         <el-table
         v-loading="loading"
           :data="tableData"
@@ -129,5 +162,8 @@ export default {
  .pagination{
     margin-top: 30px;
     text-align: right;
+  }
+  .selecform {
+    text-align: left;
   }
 </style>

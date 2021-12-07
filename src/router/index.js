@@ -17,73 +17,71 @@ import store from '@/store/index.js'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
+const routes = [{
+  path: '/login',
+  name: 'login',
+  component: Login
+},
+{
+  path: '/',
+  name: 'main',
+  component: Main,
+  children: [{
+    path: '',
+    // path: '',
+    component: Dashboard,
+    name: 'Default'
   },
   {
     path: '/',
-    name: 'main',
-    component: Main,
-    children: [
-      {
-        path: '',
-        // path: '',
-        component: Dashboard,
-        name: 'Default'
-      },
-      {
-        path: '/',
-        // path: '',
-        component: Dashboard,
-        name: 'Dashboard'
-      },
-      {
-        path: '/allfile',
-        component: allfile
-      },
-      {
-        path: '/alluser',
-        component: alluser
-      },
-      {
-        path: '/loginlog',
-        component: loginlog
-      },
-      {
-        path: '/tokenlist',
-        component: tokenlist
-      },
-      {
-        path: '/alluserfile',
-        component: alluserfile
-      },
-      {
-        path: '/deletefile',
-        component: deletefile
-      },
-      {
-        path: '/dir',
-        component: dir
-      },
-      {
-        path: '/publishshare',
-        component: publishshare
-      },
-      {
-        path: '/setting',
-        component: setting,
-        name: 'setting'
-      },
-      {
-        path: '/testpage',
-        component: testpage,
-        name: 'testpage'
-      }
-    ]
+    // path: '',
+    component: Dashboard,
+    name: 'Dashboard'
+  },
+  {
+    path: '/allfile',
+    component: allfile
+  },
+  {
+    path: '/alluser',
+    component: alluser
+  },
+  {
+    path: '/loginlog',
+    component: loginlog
+  },
+  {
+    path: '/tokenlist',
+    component: tokenlist
+  },
+  {
+    path: '/alluserfile',
+    component: alluserfile
+  },
+  {
+    path: '/deletefile',
+    component: deletefile
+  },
+  {
+    path: '/dir',
+    component: dir
+  },
+  {
+    path: '/publishshare',
+    component: publishshare
+  },
+  {
+    path: '/setting',
+    component: setting,
+    name: 'setting'
+  },
+  {
+    path: '/testpage',
+    component: testpage,
+    name: 'testpage'
   }
+  ]
+}
 ]
 
 const router = new VueRouter({
