@@ -5,10 +5,6 @@
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item><a href="/">主机：{{HostName}} OS:{{os}}（V{{platformVersion}}）开机时间：{{bootTime}}</a></el-breadcrumb-item>
        </el-breadcrumb>
-        <!-- <div class="home-container">
-           <div  class="titleinfo"  >用户</div>
-           <div   class="titleinfo"  >文件数</div>
-       </div> -->
         <div class="home-container">
            <div class="viewcontent"><div ref="cpuView" class="chview"></div><span>CPU</span></div>
            <div class="viewcontent"><div ref="memView"  class="chview"></div><span>内存</span></div>
@@ -18,6 +14,14 @@
            <div ref="cpuViewlist" style="flex:1 ;width: 1000px;height:400px;"></div>
        </div> -->
       </div>
+        <el-descriptions>
+        <el-descriptions-item label="文件总数">{{mediafileinfo.fileTotal}}</el-descriptions-item>
+        <el-descriptions-item label="图片总数">{{mediafileinfo.imageTotal }}</el-descriptions-item>
+        <el-descriptions-item label="视频总数">{{mediafileinfo.videoTotal}}</el-descriptions-item>
+        <el-descriptions-item label="文件总大小">{{formatDiskSize(mediafileinfo.fileTotalSize)}}</el-descriptions-item>
+        <el-descriptions-item label="图片总大小">{{formatDiskSize(mediafileinfo.imageTotalSize)}}</el-descriptions-item>
+        <el-descriptions-item label="视频总大小">{{formatDiskSize(mediafileinfo.videoTotalSize)}}</el-descriptions-item>
+    </el-descriptions>
   </el-card>
 </template>
 <script>
@@ -42,6 +46,7 @@ export default {
       memView: null,
       cpuViewlist: null,
       tableData: {},
+      mediafileinfo: {},
       loading: false,
       cpuOption: {
         tooltip: {
@@ -223,6 +228,7 @@ export default {
           this.setCpuInfo()
           this.setDiskInfo()
           this.setMemInfo()
+          this.mediafileinfo = this.tableData.mediafileinfo
         }).catch((error) => {
           this.loading = false
           console.log('error', error)
@@ -269,6 +275,9 @@ export default {
         name: '未使用' + utils.formatDiskSize(empty)
       })
       this.diskView.setOption(this.diskOption, true)
+    },
+    formatDiskSize (value) {
+      return utils.formatDiskSize(value)
     }
   }
 }

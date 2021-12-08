@@ -49,23 +49,20 @@
     </el-table-column>
           <el-table-column
             prop="id"
-            label="ID"
-            width="80">
-          </el-table-column>
-          <el-table-column
-            prop="uid"
-            label="用户ID"
-            width="80">
+            label="tokenID/用户ID"
+            width="120">
+             <template slot-scope="scope">
+                {{scope.row.id}} / {{scope.row.uid}}
+             </template>
           </el-table-column>
           <el-table-column
             prop="phone"
-            label="手机号"
-            width="160">
-          </el-table-column>
-           <el-table-column
-            prop="utoken"
-            label="token"
-            width="280">
+            label="手机号/token"
+            width="300">
+             <template slot-scope="scope">
+                {{scope.row.phone}}<br>
+                 {{scope.row.utoken}}<br>
+             </template>
           </el-table-column>
            <el-table-column
             label="过期时间">

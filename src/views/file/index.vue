@@ -44,17 +44,12 @@
           style="width: 100%">
             <el-table-column
             type="index"
-            width="40">
+            width="38">
           </el-table-column>
            <el-table-column prop="date"
           align="center" label="图" width="180">
           <template slot-scope="scope">
-          <!--  <img v-if="scope.row.cover.type == 1"
-                  style="width:100px;height:100px;"
-                   :src="scope.row.cover.images[0]">
-                  <img v-else style="width:100px;height:100px;" :src="defaulturl"> -->
-                  <!-- {{":"+$store.getters.getImageUrl(scope.row.sha1)}} -->
-             <span  v-if="scope.row.type == 1">文件夹</span>
+           <span  v-if="scope.row.type == 1">文件夹</span>
            <el-image  v-else
               style="width: 100px; height: 100px"
               :src="$store.getters.getImageUrlQ(scope.row.sha1)"
@@ -62,33 +57,48 @@
               fit="contain"
               lazy>
             </el-image>
+            <br>
+            {{formatDiskSize(scope.row.size)}}
           </template>
         </el-table-column>
           <el-table-column
-            prop="id"
             label="ID"
             width="80">
-          </el-table-column>
-          <el-table-column
-            prop="sha1"
-            label="文件sha1">
-          </el-table-column>
-           <el-table-column
-            prop="createattimestr"
-            label="创建时间"
-            width="200">
-           </el-table-column>
-            <el-table-column
-            label="文件大小"
-            width="80">
-            <template  slot-scope="scope">
-              {{formatDiskSize(scope.row.size)}}
+             <template  slot-scope="scope" style="white-space: pre-wrap;text-align:center;">
+               {{scope.row.id}}
             </template>
           </el-table-column>
           <el-table-column
+            label="文件名称(SHA1)"
+            width="200">
+              <template  slot-scope="scope">
+            {{scope.row.filename}}<br>({{scope.row.sha1}})
+              </template>
+          </el-table-column>
+           <el-table-column
+            label="创建时间"
+            width="180">
+             <template  slot-scope="scope">
+            {{scope.row.createattimestr}}
+             </template>
+           </el-table-column>
+          <el-table-column
             prop="path"
             label="文件路径"
-            width="180">
+            width="300">
+          </el-table-column>
+          <el-table-column
+          fixed="right"
+            label="操作"
+            width="120">
+            <template  slot-scope="scope">
+              <el-switch
+              @change="changeSwitch"
+              v-model="scope.row.comment_status"
+              active-color="#13ce66"
+              inactive-color="#ff4949">
+            </el-switch>
+            </template>
           </el-table-column>
        </el-table>
         <el-pagination
