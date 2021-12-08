@@ -5,13 +5,10 @@ import Main from '@/views/main/'
 import Dashboard from '@/views/dashboard'
 import allfile from '@/views/file/'
 import alluser from '@/views/user/alluser.vue'
-import loginlog from '@/views/user/loginlog.vue'
 import tokenlist from '@/views/user/tokenlist.vue'
-import deletefile from '@/views/userfile/deletefile.vue'
 import dir from '@/views/userfile/dir.vue'
-import publishshare from '@/views/userfile/publishshare.vue'
 import setting from '@/views/setting/'
-import testpage from '@/views/testpage/'
+import importfile from '@/views/importfile/'
 import alluserfile from '@/views/userfile/alluserfile.vue'
 import store from '@/store/index.js'
 
@@ -47,10 +44,6 @@ const routes = [{
     component: alluser
   },
   {
-    path: '/loginlog',
-    component: loginlog
-  },
-  {
     path: '/tokenlist',
     component: tokenlist
   },
@@ -59,16 +52,8 @@ const routes = [{
     component: alluserfile
   },
   {
-    path: '/deletefile',
-    component: deletefile
-  },
-  {
     path: '/dir',
     component: dir
-  },
-  {
-    path: '/publishshare',
-    component: publishshare
   },
   {
     path: '/setting',
@@ -76,9 +61,9 @@ const routes = [{
     name: 'setting'
   },
   {
-    path: '/testpage',
-    component: testpage,
-    name: 'testpage'
+    path: '/importfile',
+    component: importfile,
+    name: 'importfile'
   }
   ]
 }

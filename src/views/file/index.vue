@@ -3,7 +3,7 @@
     <div slot="header" class="clearfix">
        <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item><a href="/">文件管理</a></el-breadcrumb-item>
+        <el-breadcrumb-item><a href="/">全部文件</a></el-breadcrumb-item>
        </el-breadcrumb>
       </div>
        <el-form ref="form"  label-width="80px" size="mini" class="selecform" >
@@ -20,15 +20,6 @@
             <el-radio :label="0">已删除</el-radio>
             <el-radio :label="1">未删除</el-radio>
           </el-radio-group>
-        </el-form-item>
-        <el-form-item label="筛选用户" >
-           <el-checkbox v-model="checked">手机号</el-checkbox>
-          <!-- v-model="input" -->
-          <el-input style="width: 30%;  margin:0px 20px 0px" placeholder="请输入手机号"
-          clearable='true'
-          v-model="text"
-          maxlength="12"
-          show-word-limit></el-input>
         </el-form-item>
         <el-form-item label="上传时间">
           <el-date-picker

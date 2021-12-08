@@ -17,13 +17,9 @@
       <i class="el-icon-s-home"></i>
       <span slot="title">数据统计</span>
     </el-menu-item>
-    <el-menu-item index="/allfile" >
-      <i class="el-icon-document"></i>
-      <span slot="title">全部文件</span>
-    </el-menu-item>
       <el-submenu  index="/alluser">
         <template slot="title">
-          <i class="el-icon-location"></i>
+          <i class="el-icon-user"></i>
           <span>用户管理</span>
         </template>
         <!-- <el-menu-item-group>
@@ -37,13 +33,12 @@
     </el-submenu>
       <el-submenu index="1">
         <template slot="title">
-          <i class="el-icon-location"></i>
+          <i class="el-icon-document"></i>
           <span>用户文件</span>
         </template>
+          <el-menu-item index="/allfile">全部文件</el-menu-item>
           <el-menu-item index="/alluserfile">用户文件</el-menu-item>
           <el-menu-item index="/dir">文件夹</el-menu-item>
-          <el-menu-item index="/deletefile">已删除</el-menu-item>
-          <el-menu-item index="/publishshare">共享文件夹</el-menu-item>
     </el-submenu>
      <!-- <el-submenu index="/112-1" >
         <template slot="title">
@@ -55,12 +50,12 @@
           <el-menu-item index="112-2">推荐管理</el-menu-item>
     </el-submenu> -->
      <el-menu-item index="/setting">
-      <i class="el-icon-s-comment"></i>
+      <i class="el-icon-setting"></i>
       <span slot="title">系统设置</span>
     </el-menu-item>
-      <el-menu-item index="/testpage">
-      <i class="el-icon-s-comment"></i>
-      <span slot="title">测试页面</span>
+      <el-menu-item index="/importfile">
+      <i class="el-icon-document-add"></i>
+      <span slot="title">文件导入</span>
     </el-menu-item>
   </el-menu>
 </template>
