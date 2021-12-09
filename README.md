@@ -20,5 +20,12 @@ npm run build
 npm run lint
 ```
 
+
+### Unknown custom element: <el-descriptions> - did you register the component correctly?
+```
+npm uninstall element-ui
+npm i element-ui -S  
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

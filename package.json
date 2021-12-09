@@ -13,7 +13,7 @@
     "cropperjs": "^1.5.9",
     "echarts": "^5.0.1",
     "element-tiptap": "^1.26.2",
-    "element-ui": "^2.14.1",
+    "element-ui": "^2.15.6",
     "json-bigint": "^1.0.0",
     "vue": "^2.6.12",
     "vue-particles": "^1.0.9",

@@ -14,13 +14,13 @@
            <div ref="cpuViewlist" style="flex:1 ;width: 1000px;height:400px;"></div>
        </div> -->
       </div>
-        <el-descriptions>
-        <el-descriptions-item label="文件总数">{{mediafileinfo.fileTotal}}</el-descriptions-item>
-        <el-descriptions-item label="图片总数">{{mediafileinfo.imageTotal }}</el-descriptions-item>
-        <el-descriptions-item label="视频总数">{{mediafileinfo.videoTotal}}</el-descriptions-item>
-        <el-descriptions-item label="文件总大小">{{formatDiskSize(mediafileinfo.fileTotalSize)}}</el-descriptions-item>
-        <el-descriptions-item label="图片总大小">{{formatDiskSize(mediafileinfo.imageTotalSize)}}</el-descriptions-item>
-        <el-descriptions-item label="视频总大小">{{formatDiskSize(mediafileinfo.videoTotalSize)}}</el-descriptions-item>
+      <el-descriptions>
+        <el-descriptions-item label="文件总数"><el-tag size="small">{{mediafileinfo.fileTotal}}</el-tag></el-descriptions-item>
+        <el-descriptions-item label="图片总数"><el-tag size="small">{{mediafileinfo.imageTotal }}</el-tag></el-descriptions-item>
+        <el-descriptions-item label="视频总数"><el-tag size="small">{{mediafileinfo.videoTotal}}</el-tag></el-descriptions-item>
+        <el-descriptions-item label="文件总大小"><el-tag type="success" size="small">{{formatDiskSize(mediafileinfo.fileTotalSize)}}</el-tag></el-descriptions-item>
+        <el-descriptions-item label="图片总大小"><el-tag type="success"  size="small">{{formatDiskSize(mediafileinfo.imageTotalSize)}}</el-tag></el-descriptions-item>
+        <el-descriptions-item label="视频总大小"><el-tag  type="success" size="small">{{formatDiskSize(mediafileinfo.videoTotalSize)}}</el-tag></el-descriptions-item>
     </el-descriptions>
   </el-card>
 </template>

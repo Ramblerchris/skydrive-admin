@@ -1,6 +1,8 @@
 <template>
 <el-card class="box-card">
     <div slot="header" class="clearfix">
+        <!-- <el-button  style="float: right; margin-left: 30px;padding: 3px 10px;" type="primary">刷新</el-button>
+        <el-button style="float: right; margin-left: 30px;padding: 3px 10px;" type="primary">过滤</el-button> -->
        <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item><a href="/">全部文件</a></el-breadcrumb-item>
