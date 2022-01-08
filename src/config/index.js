@@ -1,4 +1,4 @@
 const config = {
-  BaseUrl: 'http://127.0.0.1:9996'
+  BaseUrl: 'http://192.168.1.109:9996'
 }
 export default config

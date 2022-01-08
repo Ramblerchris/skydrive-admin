@@ -33,6 +33,9 @@ const utils = {
   },
   //  是否是数字
   isNumber (input) {
+    if (input === 0) {
+      return true
+    }
     if (input && typeof (input) === 'number') {
       return true
     }

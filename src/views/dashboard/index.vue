@@ -179,7 +179,7 @@ export default {
     this.getListData(true)
     this.timeId = setInterval(() => {
       this.getListData()
-    }, 2000)
+    }, 3200)
     // this.startTime = new Date().getTime() - 60 * 1000
     // this.endTime = new Date().getTime()
     // const that = this
@@ -225,10 +225,10 @@ export default {
           this.os = this.tableData.hostInfo.os
           this.bootTime = utils.expretimeStr(this.tableData.hostInfo.bootTime * 1000)
           this.platformVersion = this.tableData.hostInfo.platformVersion
-          this.setCpuInfo()
+          this.mediafileinfo = this.tableData.mediafileinfo
           this.setDiskInfo()
           this.setMemInfo()
-          this.mediafileinfo = this.tableData.mediafileinfo
+          this.setCpuInfo()
         }).catch((error) => {
           this.loading = false
           console.log('error', error)

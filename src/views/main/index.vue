@@ -10,7 +10,7 @@
             'el-icon-s-fold':isCollapse,
             'el-icon-s-unfold':!isCollapse}"
            v-on:click = "isCollapse = !isCollapse"></i>
-         <span>XXX</span>
+         <span>Skydrive管理系统</span>
         </div>
        <el-dropdown trigger="click">
         <div class="headerright">
